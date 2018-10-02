@@ -23,21 +23,28 @@ function Boid(location, velocity, col){
       var steeringForce = p5.Vector.sub(this.loc, redBall.loc);
 
 
+      for(var i = 0; i < boids.length; i++){
+        var dist = boids[i].loc.dist(Ball.loc);
+      if(dist < 20){
+        boids.splice(i, 1);
+      }
+    }
+
       if(this !== redBall){
         //this.vel.add(this.acc);
 
-        var dist = Ball.loc.dist(this.loc);
-        if(dist < 200){
+        //var dist = Ball.loc.dist(this.loc);
+        //if(dist < 200){
         this.vel.limit(5)
         this.loc.add(this.vel);
         steeringForce.normalize();  //  changes the magnitud to 1
         steeringForce.mult(0.25);    //  scales the magnitude to 0.5
         this.vel.add(steeringForce);
       }
-      }
+      //}
 
     }
-  
+
   //checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
