@@ -24,7 +24,7 @@ function Boid(location, velocity, col){
 
 
       for(var i = 0; i < boids.length; i++){
-        var dist = boids[i].loc.dist(Ball.loc);
+        var dist = boids[i].loc.dist(redBall.loc);
       if(dist < 20){
         boids.splice(i, 1);
       }
@@ -32,17 +32,21 @@ function Boid(location, velocity, col){
 
       if(this !== redBall){
         //this.vel.add(this.acc);
-
-        //var dist = Ball.loc.dist(this.loc);
-        //if(dist < 200){
         this.vel.limit(5)
         this.loc.add(this.vel);
-        steeringForce.normalize();  //  changes the magnitud to 1
-        steeringForce.mult(0.25);    //  scales the magnitude to 0.5
         this.vel.add(steeringForce);
-      }
-      //}
+        //for(var i = 0; i < boids.length; i++){
+        //var dist = boids[i].loc.dist(redBall.loc);
+        //if(dist < 200){
 
+
+        //  changes the magnitud to 1
+        steeringForce.mult(0.25);    //  scales the magnitude to 0.5
+
+      //}
+      //}
+        steeringForce.normalize();
+}
     }
 
   //checkEdges() reverses speed when the ball touches an edge
