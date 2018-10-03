@@ -20,33 +20,49 @@ function Boid(location, velocity, col){
   // by adding speed to x and y
   this.update = function(){
     // p5.Vector.sub()  returns a vector
-      var steeringForce = p5.Vector.sub(this.loc, redBall.loc);
 
 
-      for(var i = 0; i < boids.length; i++){
+
+      for(var i = 0; i = boids.length; i++){
         var dist = boids[i].loc.dist(redBall.loc);
       if(dist < 20){
         boids.splice(i, 1);
       }
+      else if(dist < 200){
+      var steeringForce = p5.Vector.sub(this.loc, redBall.loc);
+      //steeringForce.normalize();
+      //  changes the magnitud to 1
+      steeringForce.mult(0.25);    //  scales the magnitude to 0.25
+      boids[i].vel.limit(5);
+      boids[i].vel.add(steeringForce);
+      boids[i].loc.add(this.vel);
+}
+      else{
+        steeringForce.normalize();
+}
+
+
     }
 
-      if(this !== redBall){
+      //if(this !== redBall){
         //this.vel.add(this.acc);
-        this.vel.limit(5)
-        this.loc.add(this.vel);
-        this.vel.add(steeringForce);
+
+
         //for(var i = 0; i < boids.length; i++){
         //var dist = boids[i].loc.dist(redBall.loc);
         //if(dist < 200){
 
 
-        //  changes the magnitud to 1
-        steeringForce.mult(0.25);    //  scales the magnitude to 0.5
 
       //}
+      //else{
+        //this.loc.x = this.loc.x + this.vel.x;
+        //this.loc.x = this.loc.x + this.vel.x;
       //}
-        steeringForce.normalize();
-}
+      //}
+
+
+//}
     }
 
   //checkEdges() reverses speed when the ball touches an edge
