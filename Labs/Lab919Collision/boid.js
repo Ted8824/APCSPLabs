@@ -22,6 +22,7 @@ function Boid(location, velocity, col){
     // p5.Vector.sub()  returns a vector
 
 
+<<<<<<< HEAD
 
       for(var i = 0; i = boids.length; i++){
         var dist = boids[i].loc.dist(redBall.loc);
@@ -61,10 +62,24 @@ function Boid(location, velocity, col){
       //}
       //}
 
+=======
+      if(this !== redBall){
+        //this.vel.add(this.acc);
+
+        var dist = Ball.loc.dist(this.loc);
+        if(dist < 200){
+        this.vel.limit(5)
+        this.loc.add(this.vel);
+        steeringForce.normalize();  //  changes the magnitud to 1
+        steeringForce.mult(0.25);    //  scales the magnitude to 0.5
+        this.vel.add(steeringForce);
+      }
+      }
+>>>>>>> parent of 9244d62... Collision
 
 //}
     }
-
+  
   //checkEdges() reverses speed when the ball touches an edge
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;

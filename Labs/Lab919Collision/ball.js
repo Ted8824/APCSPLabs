@@ -6,7 +6,6 @@
 
 function Ball(location, velocity, rad, col){
   // Instance variables
-  var mouseLoc
   this.loc = location;
   this.vel = velocity;
   this.rad = rad;
@@ -24,9 +23,18 @@ function Ball(location, velocity, rad, col){
   this.update = function(){
     // p5.Vector.sub()  returns a vector
       var steeringForce = p5.Vector.sub(this.loc, redBall.loc);
-      mouseLoc = createVector(mouseX, mouseY);
-      this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09)
+      if(this === redBall){
 
+
+  }
+      if(this !== redBall){
+        //this.vel.add(this.acc);
+        this.loc.add(this.vel);
+        steeringForce.normalize();  //  changes the magnitud to 1
+        steeringForce.mult(0.5);    //  scales the magnitude to 0.5
+        this.vel.add(steeringForce);
+
+      }
 
   }
   //checkEdges() reverses speed when the ball touches an edge
