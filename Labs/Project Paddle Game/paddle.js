@@ -21,7 +21,7 @@ function Paddle(location, size, col){
   // only
   this.update = function(){
 
-      var mouseLoc = createVector(mouseX);
+      var mouseLoc = createVector(mouseX, 0);
       this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
 
   }
@@ -29,11 +29,13 @@ function Paddle(location, size, col){
   // This function checks the collision of the numBalls
   this.checkCollision = function(){
 
+    
+
   }
 
   // render() draws the ball at the new location
   this.render = function(){
     fill(this.col);
-    rect(this.loc.x, this.loc.y, this.size, this.size);
+    rect(this.loc.x, 650, this.size * 8, this.size);
   }
 }
