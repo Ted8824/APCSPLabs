@@ -21,15 +21,19 @@ function Paddle(location, size, col){
   // only
   this.update = function(){
 
-      var mouseLoc = createVector(mouseX, 0);
+      var mouseLoc = createVector(mouseX - this.size * 4, 0);
       this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
 
   }
 
-  // This function checks the collision of the numBalls
+  // This function checks the collision of the Balls
   this.checkCollision = function(){
+    for(var i = 0; i < balls.length; i++){
+      if (balls[i].loc.y >= this.size && balls[i].loc.y < 650 && balls[i].loc.x >= mouseX - this.size * 4 && balls[i].loc.x <= mouseX + this.size * 4) {
+          balls[i].vel.y = -balls[i].vel.y;
+      }
+    }
 
-    
 
   }
 
