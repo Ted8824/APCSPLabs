@@ -29,8 +29,14 @@ function Paddle(location, size, col){
   // This function checks the collision of the Balls
   this.checkCollision = function(){
     for(var i = 0; i < balls.length; i++){
-      if (balls[i].loc.y >= this.size && balls[i].loc.y < 650 && balls[i].loc.x >= mouseX - this.size * 4 && balls[i].loc.x <= mouseX + this.size * 4) {
-          balls[i].vel.y = -balls[i].vel.y;
+      if (balls[i].loc.y >= 650 && balls[i].loc.x > this.loc.x && balls[i].loc.x < this.loc.x + this.size * 8 && balls[i].loc.y <= 650 + this.size) {
+        if(balls[i].vel.y > 0){
+          balls.splice(i, 1);
+        }
+        else{
+          
+        }
+
       }
     }
 

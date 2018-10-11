@@ -15,8 +15,14 @@ function draw() {
   paddle.run();
   for (i = 0; i < balls.length; i++){
     balls[i].run();
-
   }
+
+  fill(0, 255, 0);
+  textSize(20);
+  text("Score: ", 30, 30);
+
+
+
 }
 
 // This function loads the balls and the paddle
