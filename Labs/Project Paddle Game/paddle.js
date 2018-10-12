@@ -32,8 +32,10 @@ function Paddle(location, size, col){
       if (balls[i].loc.y >= 650 && balls[i].loc.x > this.loc.x && balls[i].loc.x < this.loc.x + this.size * 8 && balls[i].loc.y <= 650 + this.size) {
         if(balls[i].vel.y > 0){
           balls.splice(i, 1);
+          score = score + 1;
+          //calculates scrore when ball is spliced
         }
-        else{
+      else{
           
         }
 

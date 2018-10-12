@@ -1,16 +1,19 @@
 //Global variables
 var balls = [];
 var paddle;
+var score = 0;
 // setup code
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
-  loadBalls(20);
+  loadBalls(50);
 }
 
 //This is ran with 30FPS
 function draw() {
+
+  //runs paddle and balls
   background(20, 20, 20);
   paddle.run();
   for (i = 0; i < balls.length; i++){
@@ -19,10 +22,14 @@ function draw() {
 
   fill(0, 255, 0);
   textSize(20);
-  text("Score: ", 30, 30);
+  text("Score: " + score, 30, 30);
 
+  if(score >= 30){
 
+      textSize(25);
+      text("congratulations you win to play again refresh page", 125, 300);
 
+  }
 }
 
 // This function loads the balls and the paddle
