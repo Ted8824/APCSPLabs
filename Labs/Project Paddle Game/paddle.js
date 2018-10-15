@@ -21,7 +21,7 @@ function Paddle(location, size, col){
   // only
   this.update = function(){
 
-      var mouseLoc = createVector(mouseX - this.size * 4, 0);
+      var mouseLoc = createVector(mouseX, 650);
       this.loc = p5.Vector.lerp(this.loc, mouseLoc, .09);
 
   }
@@ -29,14 +29,16 @@ function Paddle(location, size, col){
   // This function checks the collision of the Balls
   this.checkCollision = function(){
     for(var i = 0; i < balls.length; i++){
-      if (balls[i].loc.y >= 650 && balls[i].loc.x > this.loc.x && balls[i].loc.x < this.loc.x + this.size * 8 && balls[i].loc.y <= 650 + this.size) {
+      if (balls[i].loc.y >= 650 && balls[i].loc.x > this.loc.x - this.size * 4 && balls[i].loc.x < this.loc.x - this.size * 4 + this.size * 8 && balls[i].loc.y <= 650 + this.size) {
         if(balls[i].vel.y > 0){
           balls.splice(i, 1);
           score = score + 1;
           //calculates scrore when ball is spliced
         }
+        // if hits the bottom spon more balls
       else{
-          
+        loadBalls(2);
+        count = count ++;
         }
 
       }
@@ -48,6 +50,6 @@ function Paddle(location, size, col){
   // render() draws the ball at the new location
   this.render = function(){
     fill(this.col);
-    rect(this.loc.x, 650, this.size * 8, this.size);
+    rect(this.loc.x - this.size * 4, 650, this.size * 8, this.size);
   }
 }
