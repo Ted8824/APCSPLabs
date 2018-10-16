@@ -3,11 +3,19 @@ var balls = [];
 var paddle;
 var score = 0;
 var count = 0;
+// load image
+var img;
+var img2;
+var img3;
+
 // setup code
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
+  img = loadImage("plasma.gif");
+  img2 = loadImage("space.jpg");
+  img3 = loadImage("space2.jpg");
   loadBalls(2);
 }
 
@@ -15,7 +23,7 @@ function setup() {
 function draw() {
 
   //runs paddle and balls
-  background(20, 20, 20);
+  image(img2, 0 , 0);
   paddle.run();
   for (i = 0; i < balls.length; i++){
     balls[i].run();
@@ -29,6 +37,7 @@ function draw() {
 
       textSize(25);
       text("congratulations you win to play again refresh page", 125, 300);
+
       // causes error to freeze code
       jasdkfljashkjasd
   }
@@ -41,7 +50,7 @@ function loadBalls(numBalls){
   for (i = 0; i < numBalls; i++){
     var location = createVector(random(800), random(0, 300));
     var velocity = createVector(random(-3, 3), random(-3, 3));
-    var r = random(10, 20);
+    var r = random(30, 50);
     var col = color(random(255), random(255), random(255));
     balls.push(new Ball(location, velocity, r, col));
   }

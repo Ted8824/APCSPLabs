@@ -39,6 +39,6 @@ function Ball(location, velocity, rad, col){
   // render() draws the ball at the new location
   this.render = function(){
     fill(this.col);
-    ellipse(this.loc.x, this.loc.y, rad, rad);
+    image(img, this.loc.x, this.loc.y, rad, rad);
   }
 }

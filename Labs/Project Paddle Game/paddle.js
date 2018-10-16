@@ -29,7 +29,11 @@ function Paddle(location, size, col){
   // This function checks the collision of the Balls
   this.checkCollision = function(){
     for(var i = 0; i < balls.length; i++){
-      if (balls[i].loc.y >= 650 && balls[i].loc.x > this.loc.x - this.size * 4 && balls[i].loc.x < this.loc.x - this.size * 4 + this.size * 8 && balls[i].loc.y <= 650 + this.size) {
+      if (balls[i].loc.y + balls[i].rad >= 650 &&
+        balls[i].loc.x + balls[i].rad > this.loc.x - this.size * 4
+        && balls[i].loc.x + balls[i].rad < this.loc.x - this.size * 4 + this.size * 8
+        && balls[i].loc.y + balls[i].rad <= 650 + this.size) {
+
         if(balls[i].vel.y > 0){
           balls.splice(i, 1);
           score = score + 1;
@@ -38,7 +42,8 @@ function Paddle(location, size, col){
         // if hits the bottom spon more balls
       else{
         loadBalls(2);
-        count = count ++;
+        count++;
+        
         }
 
       }
@@ -50,6 +55,6 @@ function Paddle(location, size, col){
   // render() draws the ball at the new location
   this.render = function(){
     fill(this.col);
-    rect(this.loc.x - this.size * 4, 650, this.size * 8, this.size);
+    image(img3, this.loc.x - this.size * 4, 650, this.size * 8, this.size);
   }
 }
