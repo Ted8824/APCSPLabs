@@ -42,8 +42,8 @@ function Paddle(location, size, col){
         // if hits the bottom spon more balls
       else{
         loadBalls(2);
-        count++;
-        
+        count = count + 2;
+
         }
 
       }

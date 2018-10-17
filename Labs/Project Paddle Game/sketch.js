@@ -7,15 +7,23 @@ var count = 0;
 var img;
 var img2;
 var img3;
+//Buttons
+var button;
 
 // setup code
 function setup() {
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
+
   img = loadImage("plasma.gif");
   img2 = loadImage("space.jpg");
   img3 = loadImage("space2.jpg");
+
+  //button = createButton('Play');
+  //button.position(350, 300);
+  //button.mousePressed(loadBalls(2));
+
   loadBalls(2);
 }
 
@@ -36,7 +44,14 @@ function draw() {
   if(score >= 30){
 
       textSize(25);
-      text("congratulations you win to play again refresh page", 125, 300);
+      text("You Win", 350, 300);
+
+      // causes error to freeze code
+      jasdkfljashkjasd
+  }
+  else if(balls.length === 0){
+      textSize(25);
+      text("You Lose", 350, 300);
 
       // causes error to freeze code
       jasdkfljashkjasd
