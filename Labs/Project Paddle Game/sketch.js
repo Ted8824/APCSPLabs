@@ -3,6 +3,7 @@ var balls = [];
 var paddle;
 var score = 0;
 var count = 0;
+var count2 = 0;
 // load image
 var img;
 var img2;
@@ -21,7 +22,7 @@ function setup() {
   img3 = loadImage("space2.jpg");
 
   //button = createButton('Play');
-  //button.position(350, 300);
+  //button.position(350, 750);
   //button.mousePressed(loadBalls(2));
 
   loadBalls(2);
@@ -41,6 +42,15 @@ function draw() {
   textSize(20);
   text("Score: " + score, 30, 30);
 
+  //acounts for missing balls if any in the code
+  for(var i = 0; i < balls.length; i++){
+    if(balls[i].loc.y > 800 && balls[i].loc.x > 800){
+      count2++;
+    }else{
+
+    }
+  }
+
   if(score >= 30){
 
       textSize(25);
@@ -49,13 +59,18 @@ function draw() {
       // causes error to freeze code
       jasdkfljashkjasd
   }
-  else if(balls.length === 0){
+  else if(balls.length - count2 === 0){
       textSize(25);
       text("You Lose", 350, 300);
 
       // causes error to freeze code
       jasdkfljashkjasd
   }
+
+  //Instructions for the game
+  fill(0, 255, 0);
+  textSize(20);
+  text("Instructions: collect 30 balls to win\nhit bottom of paddle to gain more balls\nhit top of paddle to collect\nif all balls are gone you lose", 30, 700);
 
 }
 
