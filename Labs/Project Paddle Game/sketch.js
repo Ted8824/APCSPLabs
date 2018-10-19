@@ -30,7 +30,6 @@ function setup() {
 
 //This is ran with 30FPS
 function draw() {
-
   //runs paddle and balls
   image(img2, 0 , 0);
   paddle.run();
@@ -53,15 +52,15 @@ function draw() {
 
   if(score >= 30){
 
-      textSize(25);
-      text("You Win", 350, 300);
+      textSize(50);
+      text("You Win!", 300, 300);
 
       // causes error to freeze code
       jasdkfljashkjasd
   }
   else if(balls.length - count2 === 0){
-      textSize(25);
-      text("You Lose", 350, 300);
+      textSize(50);
+      text("You Lose :(", 300, 300);
 
       // causes error to freeze code
       jasdkfljashkjasd
