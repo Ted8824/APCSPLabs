@@ -8,28 +8,61 @@ var count2 = 0;
 var img;
 var img2;
 var img3;
+var img4;
 //Buttons
 var button;
+//sounds
+var startSound;
+var loseSound;
+var winSound;
+//time
+var s;
 
 // setup code
 function setup() {
-  var cnv = createCanvas(800, 800);
+  var cnv = createCanvas(900, 900);
   cnv.position((windowWidth-width)/2, 30);
   background(20, 20, 20);
 
-  img = loadImage("plasma.gif");
-  img2 = loadImage("space.jpg");
-  img3 = loadImage("space2.jpg");
+  img = loadImage("box.png");
+  img2 = loadImage("background.jpg");
+  img3 = loadImage("marioBoard.jpg");
+  img4 = loadImage("over.jpg");
 
   //button = createButton('Play');
   //button.position(350, 750);
   //button.mousePressed(loadBalls(2));
 
+  //load initial balls
   loadBalls(2);
+
+  //changes frame rate to higher value
+  frameRate(2000);
+
+  //plays the start sound
+  startSound.setVolume(1.0);
+  startSound.play();
+
+  //shows the time
+  s = second();
+
+}
+
+function preload(){
+  //load the sounds
+  soundFormats('mp3', 'ogg');
+  startSound = loadSound('theme.mp3');
+  winSound = loadSound('win.mp3');
+  loseSound = loadSound('die.mp3');
 }
 
 //This is ran with 30FPS
 function draw() {
+
+  fill(0, 255, 0);
+  textSize(50);
+  text('Time: ' + s, 30, 50);
+
   //runs paddle and balls
   image(img2, 0 , 0);
   paddle.run();
@@ -51,25 +84,31 @@ function draw() {
   }
 
   if(score >= 30){
-
+      //this is the text
       textSize(50);
       text("You Win!", 300, 300);
+      //this stops the sound and play the win sound
+      startSound.stop();
+      winSound.play();
 
       // causes error to freeze code
       jasdkfljashkjasd
   }
   else if(balls.length - count2 === 0){
-      textSize(50);
-      text("You Lose :(", 300, 300);
+    
+      image(img4, -350, 0);
+      //this stops sound and plays the lose sound
+      startSound.stop();
+      loseSound.play();
 
       // causes error to freeze code
       jasdkfljashkjasd
   }
 
   //Instructions for the game
-  fill(0, 255, 0);
+  fill(255, 140, 0);
   textSize(20);
-  text("Instructions: collect 30 balls to win\nhit bottom of paddle to gain more balls\nhit top of paddle to collect\nif all balls are gone you lose", 30, 700);
+  text("Instructions: collect 30 balls to win\nhit bottom of paddle to gain more balls\nhit top of paddle to collect\nif all balls are gone you lose", 450, 30);
 
 }
 
