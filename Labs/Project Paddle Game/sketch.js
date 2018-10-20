@@ -3,12 +3,14 @@ var balls = [];
 var paddle;
 var score = 0;
 var count = 0;
+
 var count2 = 0;
 // load image
 var img;
 var img2;
 var img3;
 var img4;
+var img5;
 //Buttons
 var button;
 //sounds
@@ -28,6 +30,7 @@ function setup() {
   img2 = loadImage("background.jpg");
   img3 = loadImage("marioBoard.jpg");
   img4 = loadImage("over.jpg");
+  img5 = loadImage("win.jpg");
 
   //button = createButton('Play');
   //button.position(350, 750);
@@ -44,8 +47,7 @@ function setup() {
   startSound.play();
 
   //shows the time
-  s = second();
-
+  //s = second();
 }
 
 function preload(){
@@ -76,17 +78,17 @@ function draw() {
 
   //acounts for missing balls if any in the code
   for(var i = 0; i < balls.length; i++){
-    if(balls[i].loc.y > 800 && balls[i].loc.x > 800){
+    if(balls[i].loc.y > 900 && balls[i].loc.x > 900){
       count2++;
     }else{
 
     }
   }
 
-  if(score >= 30){
+  //win condition
+  if(score === 30){
       //this is the text
-      textSize(50);
-      text("You Win!", 300, 300);
+      image(img5, 0, 0, img5.width * 2.5, img5.height * 4);
       //this stops the sound and play the win sound
       startSound.stop();
       winSound.play();
@@ -94,8 +96,9 @@ function draw() {
       // causes error to freeze code
       jasdkfljashkjasd
   }
+  //lose condition
   else if(balls.length - count2 === 0){
-    
+
       image(img4, -350, 0);
       //this stops sound and plays the lose sound
       startSound.stop();
