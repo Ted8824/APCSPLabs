@@ -1,0 +1,5 @@
+bear
+dog
+cat
+horse
+pig
