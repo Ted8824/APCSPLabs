@@ -1,4 +1,5 @@
 //Ted Ikehara
+//Bubble sort
 //10/23/18
 
 var text;
@@ -13,9 +14,9 @@ function preLoad(){
 function setup(){
   preLoad();
   bubbleSort();
-  console.log(text);
 }
 
+//Buble sorting meathod
 function bubbleSort(){
   for(var i = text.length - 1; i > 0; i--){
     for(var j = 0; j < i; j++){
@@ -27,4 +28,5 @@ function bubbleSort(){
       }
     }
   }
+  console.log(text);
 }
