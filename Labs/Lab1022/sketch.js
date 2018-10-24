@@ -3,6 +3,7 @@
 //10/23/18
 
 var text;
+var text2;
 var temp;
 
 
@@ -13,20 +14,21 @@ function preLoad(){
 
 function setup(){
   preLoad();
-  bubbleSort();
+  bubbleSort(text);
 }
 
 //Buble sorting meathod
-function bubbleSort(){
-  for(var i = text.length - 1; i > 0; i--){
+function bubbleSort(t){
+  for(var i = t.length - 1; i > 0; i--){
     for(var j = 0; j < i; j++){
-      if(text[j] > text[j + 1]){
+      if(t[j] > t[j + 1]){
         //swap text
-        temp = text[j];
-        text[j] = text[j + 1];
-        text[j + 1] = temp;
+        temp = t[j];
+        t[j] = t[j + 1];
+        t[j + 1] = temp;
       }
     }
   }
-  console.log(text);
+  t = text2;
+  console.log(text2);
 }
