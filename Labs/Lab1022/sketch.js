@@ -3,7 +3,7 @@
 //10/23/18
 
 var text;
-var text2;
+var text2 = [];
 var temp;
 
 
@@ -13,6 +13,7 @@ function preLoad(){
 }
 
 function setup(){
+  noCanvas();
   preLoad();
   bubbleSort(text);
 }
@@ -29,6 +30,6 @@ function bubbleSort(t){
       }
     }
   }
-  t = text2;
-  console.log(text2);
+
+  console.log(t);
 }
