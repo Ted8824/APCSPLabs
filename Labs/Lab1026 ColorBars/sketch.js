@@ -11,9 +11,7 @@ function setup() {
   cnv.position((windowWidth-width)/2, 30);
   background(0);
   loadBars(255);
-  bars = bars1;
   bubbleSort();
-
 }
 
 //draw
@@ -21,6 +19,12 @@ function draw() {
   // Runs the boids and the ball
   for (i = 0; i < bars.length; i++){
     bars[i].run();
+  }
+  for (i = 0; i < bars1.length; i++){
+    bars1[i].run();
+    if(bars1[i].loc.y < 200){
+    bars1[i].loc.y = bars1[i].loc.y + 200;
+    }
   }
 }
 
@@ -32,6 +36,7 @@ function loadBars(num){
     var loc = createVector((w * i), 100);
     var col = color(random(255), random(255), random(255));
     bars.push(new colorBar(w, h, loc, col));
+    bars1.push(new colorBar(w, h, loc, col));
   }
 }
 
@@ -49,9 +54,9 @@ function bubbleSort(){
     }
 
   }
-  for(var i = 0; i < bars.length; i++){
-    bars1[i].loc.y + 100;
-  }
+
+
+
 }
 //select Sortin
 function selectSort(){
