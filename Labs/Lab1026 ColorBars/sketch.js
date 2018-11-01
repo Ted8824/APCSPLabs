@@ -16,7 +16,7 @@ function setup() {
 
 //draw
 function draw() {
-  // Runs the boids and the ball
+  // Runs the color bars top and bot
   for (i = 0; i < bars.length; i++){
     bars[i].run();
   }
@@ -31,12 +31,14 @@ function draw() {
 //loads the bars
 function loadBars(num){
   for(var i = 0; i < num; i++){
+    var r = random(255);
+    var g = random(255);
+    var b = random(255);
     var h = 100;
     var w = 800/num;
     var loc = createVector((w * i), 100);
-    var col = color(random(255), random(255), random(255));
-    bars.push(new colorBar(w, h, loc, col));
-    bars1.push(new colorBar(w, h, loc, col));
+    bars.push(new colorBar(w, h, loc, r, g, b));
+    bars1.push(new colorBar(w, h, loc, r, g, b));
   }
 }
 
@@ -45,11 +47,11 @@ function bubbleSort(){
   var temp = 0;
   for(var i = bars.length - 1; i > 0; i--){
     for(var j = 0; j < i; j++){
-      if(bars[j] > bars[j + 1]){
+      if(bars[j].b > bars[j + 1].b){
         //swap text
-        temp = bars[j];
-        bars[j] = bars[j + 1];
-        bars[j + 1] = temp;
+        temp = bars[j].b;
+        bars[j].b = bars[j + 1].b;
+        bars[j + 1].b = temp;
       }
     }
 
