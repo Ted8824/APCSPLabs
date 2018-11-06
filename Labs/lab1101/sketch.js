@@ -2,48 +2,57 @@
 // Ted Ikehara
 // Json Sorting lab
 
+//variables
+var data;
+var males = [];
 // setup code
 function setup() {
-  loadJSON("data.json", jData);
+  loadJSON("data.json", gotData);
 
 
   var cnv = createCanvas(800, 800);
   cnv.position((windowWidth-width)/2, 30);
   background(0);
-  loadBars(255);
 }
 
 //draw
 function draw() {
 
-  if(data){
-    bubbleSort();
-  }
+
+
 
 }
 
 function gotData(jData){
   data = jData;
+  
+  if(data){
+    bubbleSort();
+
+    for(var i; i < males.length; i++){
+      console.log(males[i]);
+    }
+  }
 }
 
 //bubble sort function
 function bubbleSort(){
 
   var temp = 0;
-  for(var i = countrydata.length - 1; i > 0; i--){
+  for(var i = data.countrydata.length - 1; i > 0; i--){
     for(var j = 0; j < i; j++){
-      if(countrydata[j].males > countrydata[j + 1].males){
+      if(data.countrydata[j].males > data.countrydata[j + 1].males){
         //swap
-        temp = countrydata[j].males;
-        countrydata[j].males = countrydata[j + 1].males;
-        countrydata[j + 1].males = temp;
+        temp = data.countrydata[j].males;
+        data.countrydata[j].males = data.countrydata[j + 1].males;
+        data.countrydata[j + 1].males = temp;
       }
     }
 
   }
-
-
-
+  for(var i = 0; i < data.countrydata.length; i++){
+    males.push(data.countrydata[i]);
+  }
 }
 //select Sortin
 function selectSort(){
