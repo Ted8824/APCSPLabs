@@ -19,13 +19,11 @@ function setup() {
 function draw() {
 
 
-
-
 }
 
 function gotData(jData){
   data = jData;
-  
+
   if(data){
     bubbleSort();
 
