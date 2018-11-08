@@ -18,6 +18,7 @@ function setup() {
 //draw
 function draw() {
 
+  
 
 }
 
@@ -27,7 +28,7 @@ function gotData(jData){
   if(data){
     bubbleSort();
 
-    for(var i; i < males.length; i++){
+    for(var i = 0; i < males.length; i++){
       console.log(males[i]);
     }
   }
