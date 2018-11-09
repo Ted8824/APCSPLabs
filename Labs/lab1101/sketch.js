@@ -18,7 +18,8 @@ function setup() {
 //draw
 function draw() {
 
-  
+  fill(255, 0, 0);
+  rect(200, 200, 70, males[1]);
 
 }
 
