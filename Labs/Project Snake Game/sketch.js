@@ -21,5 +21,11 @@ function draw() {
 
   background(20, 20, 20);
   snake.run();
+  keyPressed();
+}
 
+function keyPressed(){
+  if(keyCode === UP_ARROW){
+    snake.vel = createVector(0, -1);
+  }
 }
