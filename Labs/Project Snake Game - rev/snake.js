@@ -75,7 +75,7 @@ function Snake() {
         fill(11, 226, 119);
         textSize(100);
         text("Game Over", 150, 350);
-
+        death = true;
         //causes error in program and freezes interval
         asjdfkl;asjdf;jas
 

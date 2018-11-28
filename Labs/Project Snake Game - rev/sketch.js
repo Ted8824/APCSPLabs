@@ -9,6 +9,10 @@ var snake;
 var scl = 20;
 var score = 0;
 var food;
+var death = false;
+let counter = 0;
+
+
 
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -20,7 +24,17 @@ function setup() {
   frameRate(10);
   foodLoc();
 
+  var timer = select('#timer');
+  timer.html('0'); //insert text
+  function timeIt(){
+    counter ++;
+    timer.html(counter);
+  }
+
+  setInterval(timeIt, 1000);//native function 1000ms =1 s
+  //request animationframe is also another func
 }
+
 
 function draw() {
   background(0);
@@ -33,6 +47,7 @@ function draw() {
   if (snake.eat(food)) {
     foodLoc();
   }
+  
   snake.update();
   snake.show();
   snake.die();
