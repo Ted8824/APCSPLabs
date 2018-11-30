@@ -6,8 +6,8 @@
 
 
 var snake;
+var snake2;
 var scl = 20;
-var score = 0;
 var food;
 var death = false;
 let counter = 0;
@@ -21,6 +21,7 @@ function setup() {
   fill(200, 30, 150);
 
   snake = new Snake();
+  snake2 = new Snake();
   frameRate(10);
   foodLoc();
 
@@ -40,17 +41,33 @@ function draw() {
   background(0);
   fill(0, 0, 255);
   textSize(20);
-  text("Score: " + score, 50, 50);
+  text("Player1, Score: " + snake.score, 50, 50);
+  text("Player2, Score: " + snake2.score, 625, 50);
 
 
 
-  if (snake.eat(food)) {
+  if (snake.eat(food) || snake2.eat(food)) {
     foodLoc();
   }
-  
-  snake.update();
-  snake.show();
+
+  snake.run();
   snake.die();
+  snake2.run();
+  snake2.die();
+  if(death){
+    textAlign(CENTER, CENTER);
+    if(snake.score < snake2.score){
+      text("Player 2 Wins", 400, 450);
+      asdjfk
+    } else if(snake.score > snake2.score){
+      text("Player 1 Wins", 400, 450);
+      asdfjl
+    } else if(snake.score === snake2.score){
+      text("It is a Tie", 400, 450);
+      asdjfl
+    }
+  }
+
 
   fill(255,0,0);
   rect(food.x, food.y, scl, scl);
@@ -70,6 +87,7 @@ function foodLoc() {
 
 function mousePressed() {
   snake.total++;
+  snake2.total++;
 }
 
 
@@ -82,5 +100,13 @@ function keyPressed() {
     snake.dir(1, 0);
   } else if (keyCode === LEFT_ARROW) {
     snake.dir(-1, 0);
+  } else if ((keyIsPressed == true) && (key == 'W')) {
+    snake2.dir(0, -1);
+  } else if ((keyIsPressed == true) && (key == 'S')) {
+    snake2.dir(0, 1);
+  } else if ((keyIsPressed == true) && (key == 'D')) {
+    snake2.dir(1, 0);
+  } else if ((keyIsPressed == true) && (key == 'A')) {
+    snake2.dir(-1, 0);
   }
 }

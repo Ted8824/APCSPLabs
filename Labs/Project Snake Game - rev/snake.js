@@ -12,6 +12,7 @@ function Snake() {
   this.yspeed = 0;
   this.total = 0;
   this.seg = [];
+  this.score = 0;
 
 // this checks if the food has been eaten and counts score
 
@@ -19,11 +20,16 @@ function Snake() {
     var d = dist(this.x, this.y, pos.x, pos.y);
     if (d < 1) {
       this.total++;
-      score++;
+      this.score++;
       return true;
     } else {
       return false;
     }
+  }
+
+  this.run = function(){
+    this.update();
+    this.show();
   }
 
 
@@ -74,10 +80,10 @@ function Snake() {
       if (d < 1) {
         fill(11, 226, 119);
         textSize(100);
-        text("Game Over", 150, 350);
+        text("Game Over",150,350);
         death = true;
         //causes error in program and freezes interval
-        asjdfkl;asjdf;jas
+        //asjdfkl;asjdf;jas
 
       }
     }
