@@ -9,10 +9,14 @@ var snake;
 var snake2;
 var scl = 20;
 var food;
-var death = false;
+var img;
+var img2;
 let counter = 0;
 
-
+function preload(){
+  img = loadImage("sn.jpg");
+  img2 = loadImage("apple.jpg");
+}
 
 function setup() {
   var cnv = createCanvas(800, 800);
@@ -24,6 +28,8 @@ function setup() {
   snake2 = new Snake();
   frameRate(10);
   foodLoc();
+
+
 
   var timer = select('#timer');
   timer.html('0'); //insert text
@@ -38,7 +44,7 @@ function setup() {
 
 
 function draw() {
-  background(0);
+  background(20,20,20);
   fill(0, 0, 255);
   textSize(20);
   text("Player1, Score: " + snake.score, 50, 50);
@@ -54,23 +60,19 @@ function draw() {
   snake.die();
   snake2.run();
   snake2.die();
-  if(death){
+  if(snake.death){
     textAlign(CENTER, CENTER);
-    if(snake.score < snake2.score){
-      text("Player 2 Wins", 400, 450);
-      asdjfk
-    } else if(snake.score > snake2.score){
-      text("Player 1 Wins", 400, 450);
-      asdfjl
-    } else if(snake.score === snake2.score){
-      text("It is a Tie", 400, 450);
-      asdjfl
-    }
+    text("Player 2 Wins", 400, 450);
+    asdjfk
+  } else if(snake2.death){
+    textAlign(CENTER, CENTER);
+    text("Player 1 Wins", 400, 450);
+    asdfjl
   }
 
 
   fill(255,0,0);
-  rect(food.x, food.y, scl, scl);
+  image(img2, food.x, food.y, scl, scl);
 }
 
 function foodLoc() {
