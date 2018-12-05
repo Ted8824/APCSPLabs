@@ -92,7 +92,7 @@ function mousePressed() {
   snake2.total++;
 }
 
-
+//direction of key presses
 function keyPressed() {
   if (keyCode === UP_ARROW) {
     snake.dir(0, -1);
