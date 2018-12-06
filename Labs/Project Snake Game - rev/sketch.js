@@ -60,6 +60,8 @@ function draw() {
   snake.die();
   snake2.run();
   snake2.die();
+
+  //prints when death
   if(snake.death){
     textAlign(CENTER, CENTER);
     text("Player 2 Wins", 400, 450);
